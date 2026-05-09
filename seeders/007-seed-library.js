@@ -5,7 +5,7 @@ module.exports = {
 	async up(queryInterface, Sequelize) {
 		/**
 		 * ATTENTION: Replace 'USER_ID_FROM_USERS_TABLE' with
-		 * a UUID that actually exists in your 'users' table.
+		 * a UUID that actually exists in the 'users' table.
 		 */
 		const activeUserId = "USER_ID_FROM_USERS_TABLE";
 
