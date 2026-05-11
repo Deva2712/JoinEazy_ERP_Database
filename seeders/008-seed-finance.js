@@ -1,7 +1,5 @@
-"use strict";
-
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
 	async up(queryInterface, Sequelize) {
 		/**
 		 * ATTENTION: Replace 'USER_ID_FROM_USERS_TABLE' with
