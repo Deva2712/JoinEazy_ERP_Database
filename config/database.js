@@ -1,38 +1,36 @@
 import "dotenv/config";
 
 /**
- * Sequelize CLI config — used by `sequelize-cli` for migrations and seeders.
- * Also used by the backend connection to get DB settings.
+ * Sequelize CLI config — used by sequelize-cli for migrations and seeders.
+ * Uses the same DATABASE_* variable names as the backend.
  */
 const config = {
   development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    dialect: "postgres",
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT || 5432,
+    dialect: process.env.DATABASE_DIALECT || "postgres",
     dialectOptions: {
-      ssl: process.env.DB_SSL === "true"
-        ? { require: true, rejectUnauthorized: false }
-        : false,
+      ssl: false,
     },
   },
   test: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME_TEST || `${process.env.DB_NAME}_test`,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    dialect: "postgres",
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT || 5432,
+    dialect: process.env.DATABASE_DIALECT || "postgres",
   },
   production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    dialect: "postgres",
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT || 5432,
+    dialect: process.env.DATABASE_DIALECT || "postgres",
     dialectOptions: {
       ssl: { require: true, rejectUnauthorized: false },
     },

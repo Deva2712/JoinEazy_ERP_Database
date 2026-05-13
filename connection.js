@@ -3,17 +3,17 @@ import "dotenv/config";
 
 /**
  * Shared Sequelize instance — imported by the backend and all models.
- * Reads connection settings from environment variables.
+ * Uses the same DATABASE_* variable names as the backend .env
  */
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  process.env.DATABASE_NAME,
+  process.env.DATABASE_USERNAME,
+  process.env.DATABASE_PASSWORD,
   {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432,
-    dialect: "postgres",
-    logging: false, // set to console.log to see raw SQL in dev
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT || 5432,
+    dialect: process.env.DATABASE_DIALECT || "postgres",
+    logging: false,
     pool: {
       max: 10,
       min: 0,
@@ -21,7 +21,7 @@ const sequelize = new Sequelize(
       idle: 10000,
     },
     dialectOptions: {
-      ssl: process.env.DB_SSL === "true"
+      ssl: process.env.NODE_ENV === "production"
         ? { require: true, rejectUnauthorized: false }
         : false,
     },
